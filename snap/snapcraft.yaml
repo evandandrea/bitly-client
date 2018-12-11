@@ -1,0 +1,35 @@
+name: bitly-client
+base: core18
+version: git
+summary: Create and manage your Bitly shortlinks from the command line
+description: |
+  Use Bitly from the command line.
+
+  Retrieve all saved bitlinks (in reverse chronological order):
+
+    bitly-client
+
+  Retrieved only the five newest bitlinks:
+
+    bitly-client -c 5
+
+  Shorten a long URL:
+
+    bitly-client https://www.quora.com/What-are-the-most-interesting-HTML-JS-DOM-CSS-hacks-that-most-web-developers-dont-know-about
+
+  Look up the long url for a bitlink:
+
+    bitly-client http://bit.ly/1WOyimn
+
+grade: stable
+confinement: strict
+
+parts:
+  bitly-client:
+    plugin: nodejs
+    source: .
+
+apps:
+  bitly-client:
+    command: bitly-client
+    plugs: [network]
